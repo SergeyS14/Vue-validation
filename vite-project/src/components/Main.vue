@@ -3,8 +3,11 @@
 import Swiper from 'swiper';
 import SliderCard from './common/SliderCard.vue';
 import dataSlider from './common/mock/slider.json'
+import IconBase from './common/IconBase.vue';
+import IconArrow from './common/IconArrow.vue';
 
 export default {
+    components:{IconBase, IconArrow, SliderCard},
     data() {
         return {
            
@@ -44,7 +47,7 @@ export default {
             return this.activeIndex === 0;
         }
     },
-    components: { SliderCard }
+    
 }
 </script>
 <template>
@@ -70,11 +73,11 @@ export default {
       </div>
     </div>
     <div class="navigation">
-        <button  :class="{'disabled': isStart}" @click="clickPrevSlide"> 
-          prev
+        <button class="navigation__btn" :class="{'disabled': isStart}" @click="clickPrevSlide"> 
+            <icon-base width="24" height="24" icon-name="Arrow"><icon-arrow /></icon-base>
         </button>
-        <button :class="{'disabled': isEnd}" @click="clickNextSlide">
-          nex
+        <button class="navigation__btn reverse" :class="{'disabled': isEnd}" @click="clickNextSlide">
+            <icon-base width="24" height="24"  icon-name="Arrow"><icon-arrow /></icon-base>
         </button>
     </div>
 </div>
@@ -85,8 +88,6 @@ export default {
 
 
 .title{
-    
-   
     display: flex;
     justify-content: center;
     padding-top: 200px;
@@ -127,6 +128,7 @@ export default {
 
 .swiper{
     width: 100%;
+    height: 60rem;
     overflow: hidden;
 }
 .navigation{
@@ -134,9 +136,13 @@ export default {
     justify-content: center;
     gap: 10px;
     align-items: center;
-    width: 100vw;
     padding: 0 20px;
-    .navigation button {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    z-index: 100;
+    transform: translateX(-50%);
+    &__btn {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -145,18 +151,31 @@ export default {
           color: white;
           font-size: 40px;
           cursor: pointer;
-          border: 1px solid white;
+          border: 1px solid rgba(255, 255, 255, 0.11);
           border-radius: 50%;
           width: 60px;
           height: 60px;
+        
           
+
+
+          & svg{
+            width: 2.4rem;
+            height: 2.4rem;
+          }
+
+          &.reverse{
+        transform: rotate(180deg);
+        }
       }
-}
-.navigation button.disabled{
+    
+      &__btn.disabled{
     cursor: not-allowed;
     opacity: .5;
     transition: all .3s ease-in-out;
 }
+}
+
 
 
 </style>

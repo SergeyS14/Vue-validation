@@ -1,21 +1,13 @@
-<script setup>
+
+<script>
 import IconBase from './common/IconBase.vue';
 import IconLogo from './common/IconLogo.vue';
 import IconLng from './common/IconLng.vue';
 
-
-
-
-</script>
-
-
-
-<script>
-
 import axios from 'axios';
 
 export default {
-  el: '#btc',
+  components:{IconLng, IconLogo,IconBase},
   data() {
     return {
       info: null,
@@ -46,8 +38,8 @@ export default {
 </script>
 
 <template>
-    <header class="header">
-      <icon-base class="header__logo" icon-name="Logo"><icon-logo /></icon-base>
+    <header class="header" >
+      <icon-base width="42" height="42" class="header__logo" icon-name="Logo"><icon-logo /></icon-base>
   <nav  class="header__nav">
       <ul class="header__list">
           <li class="header__list__item"><a>Функции</a></li>
@@ -153,9 +145,7 @@ export default {
   font-size: 1.4rem;
   gap: 1.1rem;
 
-  &__item{
-    
-  }
+ 
 
  }
 }

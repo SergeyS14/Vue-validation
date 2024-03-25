@@ -1,9 +1,9 @@
 <template>
-    <div :class="['SlideCard',$style.SlideCard,{[$style['_active']]:active}]" >
-        <span>{{ card.subtitle }}</span>
-        <span>{{ card.title }}</span>
-        <span>{{ card.text }}</span>
-        <button class="SlideCard__btn">Перейти и получить</button>
+    <div :class="['SlideCard',$style.SlideCard,{[$style['_active']]:active}]" :style="{backgroundImage:`url(${card.img})`}">
+        <span :class="$style.subtitle">{{ card.subtitle }}</span>
+        <span :class="$style.title">{{ card.title }}</span>
+        <span :class="$style.text">{{ card.text }}</span>
+        <button :class="$style.btn">Перейти и получить</button>
     </div>
 
 </template>
@@ -35,6 +35,9 @@ export default{
     transition: all .3s ease-in-out;
     cursor: pointer;
     padding: 3rem;
+    border-radius: 0.8rem;
+    background-repeat: no-repeat;
+    background-position: bottom right;
     &:global(.swiper-slide){
         transform: translateY(100px);
     }
@@ -46,28 +49,35 @@ export default{
     transform: translateY(0);
 }
 
-.SlideCard :nth-child(1){
+.subtitle{
     font-size: 1.8rem;
     color: white;
     
 }
-.SlideCard :nth-child(2){
+.title{
     color: white;
     font-size: 3.2rem;
     font-weight: bold;
+    width: 26.9rem;
     
 }
-.SlideCard :nth-child(3){
+.text{
     color: white;
     font-size: 1.6rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    
 }
 
-.SlideCard__btn{
+.btn{
         width: 22.4rem;
         height: 5.4rem;
-        color: aqua;
+        color: rgb(255, 255, 255);
+        background: rgba(29, 154, 109, 1);
+        border-radius: 1.2rem;
+        font-size: 1.6rem;
+        box-shadow: 0px 8px 16px 0px rgba(75, 72, 241, 0.19);
+
     }
 
 </style>

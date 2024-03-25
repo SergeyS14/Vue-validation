@@ -3,7 +3,9 @@
 @import 'swiper/scss';
 @import 'swiper/scss/navigation';
 
-
+*{
+  box-sizing: border-box;
+}
 body, html {
 
   margin: 0;
